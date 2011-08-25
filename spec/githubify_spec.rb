@@ -109,7 +109,7 @@ EOS
 
   describe "#issues" do
     it "should return a sorted list of unique issue numbers" do
-      ChangeLogParser.new("#200 #100 #300 #200").issues.should == ['100', '200', '300']
+      ChangeLogParser.new("#20 #100 #300 #20").issues.should == ['20', '100', '300']
     end
   end
 
