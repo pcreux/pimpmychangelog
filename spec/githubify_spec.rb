@@ -34,7 +34,19 @@ describe Githubifier do
       end
 
       it "should append the link definition at the end of the changelog" do
-        better_changelog.should include("[#123]: https://github.com/gregbell/activeadmin/issues/123")
+        better_changelog.split("\n").last.should == "[#123]: https://github.com/gregbell/activeadmin/issues/123"
+      end
+    end
+
+    context "when the changelog contains a contributor" do
+      let(:changelog) { 'New feature by @pcreux' }
+
+      it "should wrap the issue number to make a link" do
+        better_changelog.should include("[@pcreux][]")
+      end
+
+      it "should append the link definition at the end of the changelog" do
+        better_changelog.split("\n").last.should == "[@pcreux]: https://github.com/pcreux"
       end
     end
   end
