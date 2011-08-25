@@ -18,18 +18,6 @@ class Githubifier
     @better_changelog
   end
 
-  # @return [Array] issue numbers found in the changelog
-  #   Example: ['123', '223', '470']
-  def issues
-    changelog.scan(/#(\d+)/).uniq.sort.flatten
-  end
-
-  # @return [Array] contributors found in the changelog
-  #   Example: ['gregbell', 'pcreux', 'samvincent']
-  def contributors
-    changelog.scan(/@(\w+)/).uniq.sort.flatten
-  end
-
   ISSUE_NUMBER_REGEXP = /(^|[^\[])#(\d+)($|[^\]])/
   CONTRIBUTOR_REGEXP = /(^|[^\[])@(\w+)($|[^\]])/
 
@@ -47,4 +35,34 @@ class Githubifier
       @better_changelog += "\n[@#{contributor}]: https://github.com/#{contributor}"
     end
   end
+
+  def issues
+    ChangeLogParser.new(changelog).issues
+  end
+
+  def contributors
+    ChangeLogParser.new(changelog).contributors
+  end
+end
+
+class ChangeLogParser
+  attr_reader :changelog
+
+  # @param [String] changelog
+  def initialize(changelog)
+    @changelog = changelog
+  end
+
+  # @return [Array] issue numbers found in the changelog
+  #   Example: ['123', '223', '470']
+  def issues
+    changelog.scan(/#(\d+)/).uniq.sort.flatten
+  end
+
+  # @return [Array] contributors found in the changelog
+  #   Example: ['gregbell', 'pcreux', 'samvincent']
+  def contributors
+    changelog.scan(/@(\w+)/).uniq.sort.flatten
+  end
+
 end
