@@ -8,7 +8,19 @@ class Githubifier
     @changelog = changelog
   end
 
+  ISSUE_NUMBER_REGEXP = /#(\d+)/
+
   def better_changelog
-    @changelog
+    better_changelog = changelog.gsub(ISSUE_NUMBER_REGEXP, '[#\1][]')
+
+    issues.each do |issue|
+      better_changelog += "\n[##{issue}]: https://github.com/#{user}/#{project}/issues/#{issue}"
+    end
+
+    better_changelog
+  end
+
+  def issues
+    changelog.scan(ISSUE_NUMBER_REGEXP).uniq.sort
   end
 end

@@ -25,5 +25,17 @@ describe Githubifier do
         better_changelog.should == changelog
       end
     end
+
+    context "when the changelog contains an issue number" do
+      let(:changelog) { 'Pull Request #123: Add I18n.' }
+
+      it "should wrap the issue number to make a link" do
+        better_changelog.should include("[#123][]")
+      end
+
+      it "should append the link definition at the end of the changelog" do
+        better_changelog.should include("[#123]: https://github.com/gregbell/activeadmin/issues/123")
+      end
+    end
   end
 end
