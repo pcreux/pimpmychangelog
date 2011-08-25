@@ -1,2 +1,3 @@
-require File.expand_path('../pimpmychangelog/parser.rb', __FILE__)
-require File.expand_path('../pimpmychangelog/pimper.rb', __FILE__)
+%w(pimper parser cli).each do |file|
+  require File.expand_path("../pimpmychangelog/#{file}.rb", __FILE__)
+end
