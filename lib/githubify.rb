@@ -35,12 +35,12 @@ class Githubifier
   # @return [Array] issue numbers found in the changelog
   #   Example: ['123', '223', '470']
   def issues
-    changelog.scan(ISSUE_NUMBER_REGEXP)
+    changelog.scan(ISSUE_NUMBER_REGEXP).uniq.sort.flatten
   end
 
   # @return [Array] contributors found in the changelog
   #   Example: ['gregbell', 'pcreux', 'samvincent']
   def contributors
-    changelog.scan(CONTRIBUTOR_REGEXP)
+    changelog.scan(CONTRIBUTOR_REGEXP).uniq.sort.flatten
   end
 end

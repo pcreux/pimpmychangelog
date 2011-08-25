@@ -50,4 +50,17 @@ describe Githubifier do
       end
     end
   end
+
+  describe "#issues" do
+    it "should return a sorted list of unique issue numbers" do
+      Githubifier.new(nil, nil, "#200 #100 #300 #200").issues.should == ['100', '200', '300']
+    end
+  end
+
+  describe "#contributors" do
+    it "should return a sorted list of unique contributors" do
+      Githubifier.new(nil, nil, "@samvincent @pcreux @gregbell @pcreux").contributors.
+        should == ['gregbell', 'pcreux', 'samvincent']
+    end
+  end
 end
