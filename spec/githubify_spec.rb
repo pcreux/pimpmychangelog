@@ -49,17 +49,25 @@ describe Githubifier do
         better_changelog.split("\n").last.should == "[@pcreux]: https://github.com/pcreux"
       end
     end
+
+    context "when the changelog contains issue numbers or contributors which are links" do
+      let(:changelog) { '[@pcreux][] closes [#123][]' }
+
+      it "should leave them alone" do
+        better_changelog.should include("[@pcreux][] closes [#123][]")
+      end
+    end
   end
 
   describe "#issues" do
     it "should return a sorted list of unique issue numbers" do
-      Githubifier.new(nil, nil, "#200 #100 #300 #200").issues.should == ['100', '200', '300']
+      Githubifier.new(nil, nil, "#200  #100  #300  #200").issues.should == ['100', '200', '300']
     end
   end
 
   describe "#contributors" do
     it "should return a sorted list of unique contributors" do
-      Githubifier.new(nil, nil, "@samvincent @pcreux @gregbell @pcreux").contributors.
+      Githubifier.new(nil, nil, "@samvincent  @pcreux  @gregbell  @pcreux").contributors.
         should == ['gregbell', 'pcreux', 'samvincent']
     end
   end

@@ -8,16 +8,16 @@ class Githubifier
     @changelog = changelog
   end
 
-  ISSUE_NUMBER_REGEXP = /#(\d+)/
-  CONTRIBUTOR_REGEXP = /@(\w+)/
+  ISSUE_NUMBER_REGEXP = /(^|[^\[])#(\d+)($|[^\]])/
+  CONTRIBUTOR_REGEXP = /(^|[^\[])@(\w+)($|[^\]])/
 
   # @return [String] The changelog with contributors and issues as link
   def better_changelog
-    better_changelog = changelog
+    better_changelog = changelog.clone
 
     # Make links out of issue numbers and contributors
-    better_changelog.gsub!(ISSUE_NUMBER_REGEXP, '[#\1][]')
-    better_changelog.gsub!(CONTRIBUTOR_REGEXP, '[@\1][]')
+    better_changelog.gsub!(ISSUE_NUMBER_REGEXP, '\1[#\2][]\3')
+    better_changelog.gsub!(CONTRIBUTOR_REGEXP, '\1[@\2][]\3')
 
     # Append definitions of issue links
     issues.each do |issue|
@@ -35,12 +35,12 @@ class Githubifier
   # @return [Array] issue numbers found in the changelog
   #   Example: ['123', '223', '470']
   def issues
-    changelog.scan(ISSUE_NUMBER_REGEXP).uniq.sort.flatten
+    changelog.scan(ISSUE_NUMBER_REGEXP).map { |match| match[1] }.uniq.sort
   end
 
   # @return [Array] contributors found in the changelog
   #   Example: ['gregbell', 'pcreux', 'samvincent']
   def contributors
-    changelog.scan(CONTRIBUTOR_REGEXP).uniq.sort.flatten
+    changelog.scan(CONTRIBUTOR_REGEXP).map { |match| match[1] }.uniq.sort
   end
 end
