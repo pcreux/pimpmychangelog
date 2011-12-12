@@ -20,8 +20,13 @@ Install:
 
     gem install pimpmychangelog
 
-Run:
+Go in your project directory and run:
 
-    pimpmychangelog gregbell active_admin CHANGELOG.md
-      # => Pimped CHANGELOG.md
+    pimpmychangelog
+      # => Your changelog is now pimped!
 
+Notes:
+
+* We assume the CHANGELOG file is `CHANGELOG.md`
+* We assume origin points to the github repository that the issues
+  belong to.
