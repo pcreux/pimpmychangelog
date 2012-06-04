@@ -49,8 +49,8 @@ EOS
 
   describe "#contributors" do
     it "should return a sorted list of unique contributors" do
-      Parser.new("@samvincent @pcreux @gregbell @pcreux").contributors.
-        should == ['gregbell', 'pcreux', 'samvincent']
+      Parser.new("@samvincent @pcreux @gregbell @pcreux @dash-and_underscore").contributors.
+        should == ['dash-and_underscore', 'gregbell', 'pcreux', 'samvincent']
     end
   end
 end

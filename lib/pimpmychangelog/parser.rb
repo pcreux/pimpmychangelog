@@ -21,7 +21,7 @@ module PimpMyChangelog
     # @return [Array] ordered array of contributors found in the changelog
     #   Example: ['gregbell', 'pcreux', 'samvincent']
     def contributors
-      changelog.scan(/@(\w+)/).flatten.uniq.sort
+      changelog.scan(/@([\w-]+)/).flatten.uniq.sort
     end
   end
 end
