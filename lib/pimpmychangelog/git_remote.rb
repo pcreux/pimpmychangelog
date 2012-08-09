@@ -1,8 +1,20 @@
 class GitRemote
-  def initialize
-    match = fetch_url.match(/(\w+)\/(\w+)/)
-    @user = match[1]
-    @project = match[2]
+
+  REPOSITORY_PATTERN = %r{
+    # Define recurring patterns
+    (?<part> [\w\d-]+ ){0}
+
+    (?<user>\g<part>)/(?<repo>\g<part>).git$
+  }x
+
+  def initialize(url = nil)
+    @url = url || fetch_url
+
+    match = @url.match(REPOSITORY_PATTERN)
+
+    @user = match[:user]
+    @project = match[:repo]
+
     unless @user && @project
       raise "Can't extract github user and project from origin remote"
     end
