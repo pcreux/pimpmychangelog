@@ -38,7 +38,7 @@ module PimpMyChangelog
     # The following regexp ensure that the issue or contributor is
     # not wrapped between brackets (aka: is a link)
     ISSUE_NUMBER_REGEXP = /(^|[^\[])#(\d+)($|[^\]])/
-    CONTRIBUTOR_REGEXP = /(^|[^\[])@(\w+)($|[^\]])/
+    CONTRIBUTOR_REGEXP = /(^|[^\[])@([\w-]+)($|[^\]])/
 
     # @param [Array] issues An array of issue numbers
     # @param [Array] contributors An array of contributors github ids
