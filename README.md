@@ -2,6 +2,9 @@
 
 Add links to users and issues in your CHANGELOG.md.
 
+[![Build
+Status](https://travis-ci.org/pcreux/pimpmychangelog.png?branch=master)](https://travis-ci.org/pcreux/pimpmychangelog)
+
 ### Example:
 
 > Add Travis-CI support. (@pcreux, #181)
