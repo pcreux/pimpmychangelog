@@ -1,8 +1,14 @@
 # Changelog
 
+## Version 0.1.1
+
+* Add support for usernames with hyphens. Closes issue #4 reported by
+@miketheman.
+
 ## Version 0.1.0
 
-* Add support for git repos with HTTPS urls. PR [#3][] by [@Maher4Ever][]
+* Add support for git repos with HTTPS urls. PR [#3][] by
+[@Maher4Ever][].
 
 ## Version 0.0.3
 
