@@ -2,8 +2,8 @@
 
 ## Version 0.1.1
 
-* Add support for usernames with hyphens. Closes issue #4 reported by
-@miketheman.
+* Add support for usernames with hyphens. Closes issue [#4][] reported by
+[@miketheman][].
 
 ## Version 0.1.0
 
@@ -31,6 +31,8 @@ This would output the pimped version of the changelog.
 [#1]: https://github.com/com/pcreux/issues/1
 [#2]: https://github.com/com/pcreux/issues/2
 [#3]: https://github.com/com/pcreux/issues/3
+[#4]: https://github.com/com/pcreux/issues/4
 [@Maher4Ever]: https://github.com/Maher4Ever
+[@miketheman]: https://github.com/miketheman
 [@pcreux]: https://github.com/pcreux
 [@rymai]: https://github.com/rymai
