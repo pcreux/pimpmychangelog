@@ -18,7 +18,11 @@ module PimpMyChangelog
     def better_changelog
       parsed_changelog = Parser.new(changelog)
 
-      linkify_changelog(parsed_changelog.content) +
+      # If the file doesn't have an extra newline at the end the separator gets rendered
+      # as part of the changelog. So add an extra newline in that case.
+      extra_newline_if_required = parsed_changelog.content.match(/\n\n\Z/) ? "" : "\n"
+
+      linkify_changelog(parsed_changelog.content) + extra_newline_if_required +
         links_definitions(parsed_changelog.issues, parsed_changelog.contributors)
     end
 

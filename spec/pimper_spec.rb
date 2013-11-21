@@ -18,8 +18,16 @@ describe Pimper do
 
     subject { better_changelog }
 
-    context "when the changelog does not contain any reference to issues or users" do
-      let(:changelog) { 'ChangeLog' }
+    context "when the changelog does not contain any reference to issues or users and no extra newline" do
+      let(:changelog) { "ChangeLog\n" }
+
+      it "should return the original changelog with an extra newline" do
+        better_changelog.should == changelog + "\n"
+      end
+    end
+
+    context "when the changelog already includes an extra newline" do
+      let(:changelog) { "ChangeLog\n\n" }
 
       it "should return the original changelog" do
         better_changelog.should == changelog
