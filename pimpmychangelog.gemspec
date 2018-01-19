@@ -5,6 +5,7 @@ require "pimpmychangelog/version"
 Gem::Specification.new do |s|
   s.name        = "pimpmychangelog"
   s.version     = PimpMyChangelog::VERSION
+  s.license       = 'MIT'
   s.authors     = ["Philippe Creux"]
   s.email       = ["pcreux@gmail.com"]
   s.homepage    = "https://github.com/pcreux/pimpmychangelog"
