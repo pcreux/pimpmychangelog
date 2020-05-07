@@ -4,7 +4,7 @@ class GitRemote
     # Define recurring patterns
     (?<part> [\w\d-]+ ){0}
 
-    (?<user>\g<part>)/(?<repo>\g<part>).git$
+    (?<user>\g<part>)/(?<repo>\g<part>)(.git)?$
   }x
 
   def initialize(url = nil)
