@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 0.1.3
+
+* Retrieve git-remote from local configuration PR [#17][] by [@marcotc][].
+
 ## Version 0.1.2
 
 * Add support for changelogs without extra new line at the end of file.
@@ -39,8 +43,10 @@ This would output the pimped version of the changelog.
 [#3]: https://github.com/pcreux/pimpmychangelog/issues/3
 [#4]: https://github.com/pcreux/pimpmychangelog/issues/4
 [#6]: https://github.com/pcreux/pimpmychangelog/issues/6
+[#17]: https://github.com/pcreux/pimpmychangelog/issues/17
 [@Maher4Ever]: https://github.com/Maher4Ever
 [@arangamani]: https://github.com/arangamani
+[@marcotc]: https://github.com/marcotc
 [@miketheman]: https://github.com/miketheman
 [@pcreux]: https://github.com/pcreux
 [@rymai]: https://github.com/rymai
