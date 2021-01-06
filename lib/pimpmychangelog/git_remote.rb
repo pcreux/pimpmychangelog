@@ -29,6 +29,6 @@ class GitRemote
   end
 
   def run_command
-   `git remote show origin | grep "Fetch URL"`
+    `git config --get remote.origin.url`
   end
 end
